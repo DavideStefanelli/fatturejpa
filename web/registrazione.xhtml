@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrazione</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <h:outputLabel for="email" value="Email:" />
+            <h:inputText id="email" value="#{utenteMB.email}" />
+            <br/>
+
+            <h:outputLabel for="password" value="Password:" />
+            <h:inputText id="password" value="#{utenteMB.password}" />
+            <br/>
+
+            <h:outputLabel for="nome" value="Nome:" />
+            <h:inputText id="nome" value="#{utenteMB.nome}" />
+            <br/>
+
+            <h:outputLabel for="cognome" value="Cognome:" />
+            <h:inputText id="cognome" value="#{utenteMB.cognome}" />
+            <br/>
+
+            <h:outputLabel for="cf" value="Codice fiscale:" />
+            <h:inputText id="cf" value="#{utenteMB.cf}" />
+            <br/>
+
+            <h:outputLabel for="datanascita" value="Data di nascita:" />
+            <h:inputText id="datanascita" value="#{utenteMB.datanascita}" />
+            <br/>
+
+            <h:outputLabel for="sesso" value="Sesso:" />
+            <h:inputText id="sesso" value="#{utenteMB.sesso}" />
+            <br/>
+
+            <h:commandButton action="#{utenteMB.registra}" value="Registrati" />
+
+        </h:form>
+
+    </h:body>
+</html>
