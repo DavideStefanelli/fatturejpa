@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,10 +32,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Fattura.findAll", query = "SELECT f FROM Fattura f"),
-    @NamedQuery(name = "Fattura.findByCod", query = "SELECT f FROM Fattura f WHERE f.cod = :cod"),
-    @NamedQuery(name = "Fattura.findByImporto", query = "SELECT f FROM Fattura f WHERE f.importo = :importo"),
-    @NamedQuery(name = "Fattura.findByPagato", query = "SELECT f FROM Fattura f WHERE f.pagato = :pagato")})
+    @NamedQuery(name = "Fattura.findIdSocieta", query = "SELECT f FROM Fattura f WHERE f.cliente.id = :idsocieta"),
+    @NamedQuery(name = "Fattura.findByCod", query = "SELECT f FROM Fattura f WHERE f.cod = :cod")})
 public class Fattura implements Serializable {
+
+    @Column(name = "datapagamento")
+    @Temporal(TemporalType.DATE)
+    private Date datapagamento;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,27 +50,13 @@ public class Fattura implements Serializable {
     @NotNull
     @Column(name = "importo")
     private float importo;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "pagato")
-    private int pagato;
     @JoinColumn(name = "cliente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Societa cliente;
 
     public Fattura() {
     }
-
-    public Fattura(Integer cod) {
-        this.cod = cod;
-    }
-
-    public Fattura(Integer cod, float importo, int pagato) {
-        this.cod = cod;
-        this.importo = importo;
-        this.pagato = pagato;
-    }
-
+    
     public Integer getCod() {
         return cod;
     }
@@ -79,14 +71,6 @@ public class Fattura implements Serializable {
 
     public void setImporto(float importo) {
         this.importo = importo;
-    }
-
-    public int getPagato() {
-        return pagato;
-    }
-
-    public void setPagato(int pagato) {
-        this.pagato = pagato;
     }
 
     public Societa getCliente() {
@@ -120,6 +104,14 @@ public class Fattura implements Serializable {
     @Override
     public String toString() {
         return "entities.Fattura[ cod=" + cod + " ]";
+    }
+
+    public Date getDatapagamento() {
+        return datapagamento;
+    }
+
+    public void setDatapagamento(Date datapagamento) {
+        this.datapagamento = datapagamento;
     }
     
 }

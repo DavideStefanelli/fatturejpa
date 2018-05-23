@@ -106,6 +106,11 @@ public class Utente implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "contabile")
     private Collection<Societa> societaCollection;
 
+    public static class TipoUtente {
+        public static final int CONTABILE = 1;
+        public static final int AMMINISTRATORE = 2;
+    }
+    
     public Utente() {
     }
 

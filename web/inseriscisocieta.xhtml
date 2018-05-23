@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Inserisci società</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+
+            <h:outputLabel for="intestazione" value="Intestazione:" />
+            <h:inputText id="intestazione" value="#{societaManagedBean.intestazione}" />
+            <br/>
+
+            <h:outputLabel for="cf" value="Codice Fiscale:" />
+            <h:inputText id="cf" value="#{societaManagedBean.cf}" />
+            <br/>
+
+            <h:outputLabel for="piva" value="Partita Iva:" />
+            <h:inputText id="piva" value="#{societaManagedBean.piva}" />
+            <br/>
+
+            <h:outputLabel for="ragsociale" value="Ragione Sociale:" /> 
+            <h:selectOneListbox id="ragsociale" value="#{societaManagedBean.ragsociale}">
+                <f:selectItem itemValue = "1" itemLabel = "Srl" /> 
+                <f:selectItem itemValue = "2" itemLabel = "Spa" />
+                <f:selectItem itemValue = "3" itemLabel = "Snc" /> 
+                <f:selectItem itemValue = "4" itemLabel = "Privato" /> 
+                
+            </h:selectOneListbox>
+            <br/>
+
+            <h:commandButton action="#{societaManagedBean.registra}" value="Registra" />
+
+        </h:form>
+
+        
+    </h:body>
+</html>

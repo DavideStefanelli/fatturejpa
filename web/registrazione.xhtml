@@ -12,34 +12,39 @@
         <h:form>
 
             <h:outputLabel for="email" value="Email:" />
-            <h:inputText id="email" value="#{utenteMB.email}" />
+            <h:inputText id="email" value="#{utenteManagedBean.email}" />
             <br/>
 
             <h:outputLabel for="password" value="Password:" />
-            <h:inputText id="password" value="#{utenteMB.password}" />
+            <h:inputSecret id="password" value="#{utenteManagedBean.password}" />
             <br/>
 
             <h:outputLabel for="nome" value="Nome:" />
-            <h:inputText id="nome" value="#{utenteMB.nome}" />
+            <h:inputText id="nome" value="#{utenteManagedBean.nome}" />
             <br/>
 
             <h:outputLabel for="cognome" value="Cognome:" />
-            <h:inputText id="cognome" value="#{utenteMB.cognome}" />
+            <h:inputText id="cognome" value="#{utenteManagedBean.cognome}" />
             <br/>
 
             <h:outputLabel for="cf" value="Codice fiscale:" />
-            <h:inputText id="cf" value="#{utenteMB.cf}" />
+            <h:inputText id="cf" value="#{utenteManagedBean.cf}" />
             <br/>
 
             <h:outputLabel for="datanascita" value="Data di nascita:" />
-            <h:inputText id="datanascita" value="#{utenteMB.datanascita}" />
+            <h:inputText id="datanascita" value="#{utenteManagedBean.datanascita}" >
+                 <f:convertDateTime pattern="dd-MM-yyyy"/>  
+            </h:inputText>
             <br/>
 
             <h:outputLabel for="sesso" value="Sesso:" />
-            <h:inputText id="sesso" value="#{utenteMB.sesso}" />
+            <h:selectOneRadio id="sesso" value="#{utenteManagedBean.sesso}" >
+                <f:selectItem itemValue = "M" itemLabel = "Maschio" /> 
+                <f:selectItem itemValue = "F" itemLabel = "Femmina" /> 
+            </h:selectOneRadio>
             <br/>
 
-            <h:commandButton action="#{utenteMB.registra}" value="Registrati" />
+            <h:commandButton action="#{utenteManagedBean.registra}" value="Registrati" />
 
         </h:form>
 
